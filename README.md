@@ -2,6 +2,12 @@
 
 A local Firefox homepage / new-tab page in the Omarchy style: pixel fox, live clock, weather, shortcut tiles, and colors that can follow your system theme.
 
+![Start page preview](docs/preview.png)
+
+<p align="center">
+  <img src="docs/preview.gif" alt="Start page animation" width="800" />
+</p>
+
 Runs entirely on your machine (`localhost:8765`). No accounts, no cloud.
 
 ## Quick install

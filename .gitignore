@@ -1,6 +1,4 @@
 __pycache__/
 *.pyc
 .DS_Store
-*.gif
-*.mp4
-rec/
+index.anim.bak
