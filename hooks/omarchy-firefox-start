@@ -1,0 +1,14 @@
+#!/bin/bash
+# Mirror Omafox theme into the Firefox start page fallback theme.json
+# Dropped into ~/.config/omarchy/hooks/theme-set.d/ by install.sh
+set -euo pipefail
+SRC="${HOME}/.local/state/omafox/theme.json"
+DST="${HOME}/.local/share/omarchy-firefox-start/theme.json"
+if [[ -x /usr/bin/omafox ]]; then
+  /usr/bin/omafox sync >/dev/null 2>&1 || true
+fi
+if [[ -f "$SRC" ]]; then
+  mkdir -p "$(dirname "$DST")"
+  cp -f "$SRC" "$DST"
+fi
+exit 0

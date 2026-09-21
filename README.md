@@ -32,6 +32,25 @@ Use `http://firefox.localhost:8765/` instead.
 - `systemd --user` (Linux)
 - Firefox (or any browser pointed at the URL)
 
+
+## Omafox (live Omarchy theme colors)
+
+Optional. Without it the page still works using the bundled `theme.json`.
+
+`./install.sh` detects Omafox and, on a TTY, offers to install it (`yay`/`paru`). Force with:
+
+```bash
+./install.sh --with-omafox
+# or skip:
+./install.sh --without-omafox
+```
+
+After install it runs `omafox setup` / `omafox sync` when available, seeds `theme.json` from `~/.local/state/omafox/theme.json`, and installs an Omarchy hook:
+
+`~/.config/omarchy/hooks/theme-set.d/omarchy-firefox-start`
+
+so theme changes refresh the start-page fallback palette.
+
 ## Customize
 
 | What | Where |
