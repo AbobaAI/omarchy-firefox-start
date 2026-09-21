@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Firefox</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305010C'/%3E%3Cpath fill='%23FF7139' d='M6 18c2-8 10-12 16-10 2 4-1 10-6 12-2 1-6 0-10-2z'/%3E%3Ccircle cx='20' cy='12' r='3' fill='%23FFD08A'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #05010C;
+    --fg: #FFFFFF;
+    --muted: #757379;
+    --accent: #BB9AF7;
+    --panel: #1E1A24;
+    --border: #322746;
+    --font: "IBM Plex Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    color-scheme: dark;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .fox {
+    width: 96px;
+    height: 96px;
+    image-rendering: pixelated;
+    overflow: visible;
+    flex-shrink: 0;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+    text-shadow: 4px 4px 0 var(--border);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem 2rem;
+    justify-content: center;
+    align-items: baseline;
+    font-size: 1.15rem;
+    color: var(--muted);
+  }
+  .meta strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .meta .sep {
+    color: var(--border);
+    user-select: none;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(140px, 180px));
+    gap: 14px;
+    max-width: 600px;
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+  }
+  a.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 1.1rem 0.75rem;
+    background: var(--panel);
+    border: 3px solid var(--border);
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: border-color 0.12s, background 0.12s, color 0.12s;
+  }
+  a.tile:hover, a.tile:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    outline: none;
+  }
+  a.tile:active {
+    background: var(--border);
+  }
+  .tile-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+  }
+  .tile-icon img, .tile-icon svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+  .tile-icon img.omarchy {
+    image-rendering: pixelated;
+    width: 28px;
+    height: 28px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero, .grid {
+      opacity: 0;
+      transform: translateY(10px) scale(0.96);
+      filter: blur(6px);
+      animation: rise-in 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .grid {
+      animation-delay: 90ms;
+    }
+    .grid .tile {
+      opacity: 0;
+      transform: translateY(12px) scale(0.92);
+      animation: rise-in 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .grid .tile:nth-child(1) { animation-delay: 140ms; }
+    .grid .tile:nth-child(2) { animation-delay: 180ms; }
+    .grid .tile:nth-child(3) { animation-delay: 220ms; }
+    .grid .tile:nth-child(4) { animation-delay: 260ms; }
+    .grid .tile:nth-child(5) { animation-delay: 300ms; }
+    .grid .tile:nth-child(6) { animation-delay: 340ms; }
+    @keyframes rise-in {
+      to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <svg class="fox" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" aria-hidden="true">
+      <!-- pixel Firefox-ish fox, fully inside frame -->
+      <g fill="#FF7139">
+        <!-- ears -->
+        <rect x="6" y="4" width="2" height="2"/><rect x="8" y="6" width="2" height="2"/><rect x="6" y="6" width="2" height="4"/>
+        <rect x="24" y="4" width="2" height="2"/><rect x="22" y="6" width="2" height="2"/><rect x="24" y="6" width="2" height="4"/>
+        <!-- head / cheeks -->
+        <rect x="8" y="8" width="16" height="2"/>
+        <rect x="6" y="10" width="20" height="2"/>
+        <rect x="4" y="12" width="24" height="2"/>
+        <rect x="4" y="14" width="24" height="2"/>
+        <rect x="4" y="16" width="24" height="2"/>
+        <rect x="6" y="18" width="20" height="2"/>
+        <!-- snout block -->
+        <rect x="10" y="20" width="12" height="2"/>
+        <rect x="12" y="22" width="8" height="2"/>
+        <!-- body -->
+        <rect x="8" y="24" width="16" height="2"/>
+        <rect x="10" y="26" width="12" height="2"/>
+        <rect x="12" y="28" width="8" height="2"/>
+      </g>
+      <g fill="#E85D04">
+        <rect x="8" y="4" width="2" height="2"/><rect x="22" y="4" width="2" height="2"/>
+        <rect x="4" y="18" width="2" height="2"/><rect x="26" y="18" width="2" height="2"/>
+        <rect x="10" y="28" width="2" height="2"/><rect x="20" y="28" width="2" height="2"/>
+      </g>
+      <!-- muzzle -->
+      <g fill="#FFE0B0">
+        <rect x="12" y="16" width="8" height="2"/>
+        <rect x="12" y="18" width="8" height="2"/>
+        <rect x="14" y="20" width="4" height="2"/>
+      </g>
+      <!-- cheek fluff -->
+      <g fill="#FF9A5A">
+        <rect x="6" y="14" width="4" height="4"/>
+        <rect x="22" y="14" width="4" height="4"/>
+      </g>
+      <!-- eyes + nose -->
+      <g fill="#1A0A00">
+        <rect x="10" y="12" width="2" height="2"/>
+        <rect x="20" y="12" width="2" height="2"/>
+        <rect x="15" y="18" width="2" height="2"/>
+      </g>
+      <!-- eye glints -->
+      <g fill="#FFE0B0">
+        <rect x="10" y="12" width="1" height="1"/>
+        <rect x="20" y="12" width="1" height="1"/>
+      </g>
+    </svg>
+    <h1>Firefox</h1>
+    <div class="meta" id="meta">
+      <span><strong id="clock">--:--</strong></span>
+      <span class="sep">│</span>
+      <span id="weather"><strong>--</strong> °C</span>
+    </div>
+  </header>
+
+  <nav class="grid" aria-label="Shortcuts">
+    <a class="tile" href="https://www.youtube.com/">
+      <span class="tile-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.8 15.5v-7l6.3 3.5-6.3 3.5z"/></svg>
+      </span>
+      YouTube
+    </a>
+    <a class="tile" href="https://mail.google.com/">
+      <span class="tile-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="#EA4335" d="M2 6.5 12 13l10-6.5V18H2z"/><path fill="#4285F4" d="M22 6.5 12 13 2 6.5 4 4l8 5 8-5z"/><path fill="#34A853" d="M2 6.5V18l6-4.5z"/><path fill="#FBBC05" d="M22 6.5V18l-6-4.5z"/></svg>
+      </span>
+      Gmail
+    </a>
+    <a class="tile" href="https://omarchy.org/">
+      <span class="tile-icon" aria-hidden="true">
+        <img class="omarchy" src="omarchy-icon.png" alt="" width="28" height="28" />
+      </span>
+      Omarchy
+    </a>
+    <a class="tile" href="https://omarchyplugins.com/">
+      <span class="tile-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="3" y="3" width="8" height="8" fill="currentColor"/>
+          <rect x="13" y="3" width="8" height="8" fill="currentColor" opacity="0.55"/>
+          <rect x="3" y="13" width="8" height="8" fill="currentColor" opacity="0.55"/>
+          <!-- plug nib / plus -->
+          <rect x="15" y="15" width="4" height="4" fill="var(--accent)"/>
+          <rect x="16" y="13" width="2" height="2" fill="var(--accent)"/>
+          <rect x="13" y="16" width="2" height="2" fill="var(--accent)"/>
+          <rect x="18" y="16" width="2" height="2" fill="var(--accent)"/>
+          <rect x="16" y="18" width="2" height="2" fill="var(--accent)"/>
+        </svg>
+      </span>
+      Plugins
+    </a>
+    <a class="tile" href="https://omarchy.org/themes/">
+      <span class="tile-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="3" y="3" width="8" height="8" fill="#F9E2AF"/>
+          <rect x="13" y="3" width="8" height="8" fill="#94E2D5"/>
+          <rect x="3" y="13" width="8" height="8" fill="#CBA6F7"/>
+          <rect x="13" y="13" width="8" height="8" fill="var(--accent)"/>
+        </svg>
+      </span>
+      Themes
+    </a>
+    <a class="tile" href="https://github.com/">
+      <span class="tile-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 7.5c.85 0 1.71.12 2.51.35 1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.59.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+        </svg>
+      </span>
+      GitHub
+    </a>
+  </nav>
+
+<script>
+(function () {
+  // Edit WEATHER to change city (Open-Meteo)
+  const WEATHER = {
+    latitude: 45.815,
+    longitude: 15.9819,
+    timezone: "Europe/Zagreb",
+    label: "Zagreb"
+  };
+
+  const WMO = {
+    0: "clear", 1: "mainly clear", 2: "partly cloudy", 3: "overcast",
+    45: "fog", 48: "fog", 51: "drizzle", 53: "drizzle", 55: "drizzle",
+    61: "rain", 63: "rain", 65: "heavy rain", 71: "snow", 73: "snow", 75: "snow",
+    80: "showers", 81: "showers", 82: "showers", 95: "thunder", 96: "thunder", 99: "thunder"
+  };
+
+  let themeKey = "";
+
+  function applyPalette(p) {
+    if (!p) return;
+    const key = [p.background, p.foreground, p.muted, p.accent, p.lighter_background, p.selection].join("|");
+    if (key === themeKey) return;
+    themeKey = key;
+    const r = document.documentElement.style;
+    if (p.background) r.setProperty("--bg", p.background);
+    if (p.foreground) r.setProperty("--fg", p.foreground);
+    if (p.muted) r.setProperty("--muted", p.muted);
+    if (p.accent) r.setProperty("--accent", p.accent);
+    if (p.lighter_background) r.setProperty("--panel", p.lighter_background);
+    if (p.selection) r.setProperty("--border", p.selection);
+    // Keep critical style in sync so body bg never flashes old color
+    let crit = document.getElementById("theme-critical");
+    if (!crit) {
+      crit = document.createElement("style");
+      crit.id = "theme-critical";
+      document.head.prepend(crit);
+    }
+    crit.textContent =
+      "html,body{background:" + (p.background || "#05010C") + ";color:" + (p.foreground || "#fff") + "}" +
+      ":root{--bg:" + (p.background || "#05010C") + ";--fg:" + (p.foreground || "#fff") +
+      ";--muted:" + (p.muted || "#757379") + ";--accent:" + (p.accent || "#BB9AF7") +
+      ";--panel:" + (p.lighter_background || "#1E1A24") + ";--border:" + (p.selection || "#322746") + "}";
+  }
+
+  async function loadTheme() {
+    try {
+      const res = await fetch("/theme.json?ts=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) return;
+      const data = await res.json();
+      applyPalette(data.palette || data);
+    } catch (_) { /* offline */ }
+  }
+
+  function tickClock() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, "0");
+    const mm = String(now.getMinutes()).padStart(2, "0");
+    const el = document.getElementById("clock");
+    const next = hh + ":" + mm;
+    if (el.textContent !== next) el.textContent = next;
+  }
+
+  async function loadWeather() {
+    const el = document.getElementById("weather");
+    try {
+      const url =
+        "https://api.open-meteo.com/v1/forecast?latitude=" + WEATHER.latitude +
+        "&longitude=" + WEATHER.longitude +
+        "&current=temperature_2m,weather_code&timezone=" + encodeURIComponent(WEATHER.timezone);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("weather");
+      const data = await res.json();
+      const t = data.current.temperature_2m;
+      const code = data.current.weather_code;
+      const label = WMO[code] || "weather";
+      const next = "<strong>" + Math.round(t) + "°</strong> · " + label + " · " + WEATHER.label;
+      if (el.innerHTML !== next) el.innerHTML = next;
+    } catch (_) {
+      // Keep previous text — no flash to em dash on transient errors
+    }
+  }
+
+  // Seed key from whatever the server already injected (avoids redundant first paint tweak)
+  themeKey = [
+    getComputedStyle(document.documentElement).getPropertyValue("--bg").trim(),
+    getComputedStyle(document.documentElement).getPropertyValue("--fg").trim(),
+    getComputedStyle(document.documentElement).getPropertyValue("--muted").trim(),
+    getComputedStyle(document.documentElement).getPropertyValue("--accent").trim(),
+    getComputedStyle(document.documentElement).getPropertyValue("--panel").trim(),
+    getComputedStyle(document.documentElement).getPropertyValue("--border").trim()
+  ].join("|");
+
+  tickClock();
+  loadWeather();
+  setInterval(tickClock, 1000);
+  setInterval(loadTheme, 1000);
+  setInterval(loadWeather, 15 * 60 * 1000);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) loadTheme();
+  });
+})();
+</script>
+</body>
+</html>
