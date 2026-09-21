@@ -7,7 +7,7 @@ Runs entirely on your machine (`localhost:8765`). No accounts, no cloud.
 ## Quick install
 
 ```bash
-git clone https://github.com/OWNER/omarchy-firefox-start.git
+git clone https://github.com/AbobaAI/omarchy-firefox-start.git
 cd omarchy-firefox-start
 ./install.sh
 ```
