@@ -6,12 +6,6 @@ Runs entirely on your machine (`localhost:8765`). No accounts, no cloud.
 
 ![Start page](docs/preview.png)
 
-<p align="center">
-  <img src="docs/entrance.gif" alt="Entrance animation" width="720" />
-</p>
-
-<p align="center"><em>Entrance animation (opacity + slide; no CSS blur)</em></p>
-
 ## What’s included
 
 | Piece | What it does |
@@ -40,14 +34,6 @@ YouTube · Gmail · Omarchy · Plugins · Themes · **GitHub**
 Square tabs with a thin accent bar on the selected tab; urlbar and toolbar buttons match (no round pills).
 
 ![Angular Firefox tabs](docs/tabs.png)
-
-![Tabs + urlbar](docs/tabs-chrome.png)
-
-<p align="center">
-  <img src="docs/tabs-switch.gif" alt="Tab strip variants" width="720" />
-</p>
-
-<p align="center"><em>Tab strip / chrome (managed `userChrome.css` block)</em></p>
 
 ## Quick install
 
@@ -159,7 +145,7 @@ python3 serve.py
 - `install.sh` / `uninstall.sh` + systemd user service
 - Omafox detect / optional install + Omarchy `theme-set.d` hook
 - Angular Firefox tabs via managed `userChrome.css`
-- Docs screenshots + entrance / tabs GIFs
+- README screenshots (start page + tabs chrome)
 
 ## License
 
