@@ -1,0 +1,116 @@
+/* BEGIN OMARCHY TABS */
+/*
+ * Rectangular Firefox chrome to match Omarchy / Hyprland.
+ * Colors come from Omafox (lightweight theme). This file only changes shape.
+ */
+
+:root {
+  --omarchy-tab-radius: 0px;
+  --omarchy-tab-accent: var(--lwt-tab-line-color, AccentColor);
+
+  --tab-border-radius: var(--omarchy-tab-radius) !important;
+  --tab-margin-block: 0px !important;
+  --tab-overflow-clip-margin: 0px !important;
+  --tab-inner-inline-margin: 0px !important;
+  --tab-box-shadow-selected: none !important;
+  --tab-selected-outline-color: transparent !important;
+  --tab-hover-outline-color: transparent !important;
+  --tab-outline: none !important;
+
+  --toolbarbutton-border-radius: var(--omarchy-tab-radius) !important;
+  --button-border-radius: var(--omarchy-tab-radius) !important;
+  --urlbar-border-radius: var(--omarchy-tab-radius) !important;
+  --arrowscrollbox-scrollicon-border-radius: var(--omarchy-tab-radius) !important;
+}
+
+/* Tab strip: flush rectangles, no floating pills */
+.tab-background {
+  border-radius: var(--omarchy-tab-radius) !important;
+  margin-block: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab {
+  padding-inline: 0 !important;
+  overflow-clip-margin: 0px !important;
+}
+
+#tabbrowser-tabs[orient="horizontal"] {
+  --tabstrip-min-height: var(--tab-min-height);
+}
+
+/* Selected tab: 2px accent bar, same idea as Hyprland's active border */
+.tab-background:is([selected], [multiselected]) {
+  box-shadow: inset 0 2px 0 var(--omarchy-tab-accent) !important;
+}
+
+/* Photon-style separators between idle tabs */
+#tabbrowser-tabs[orient="horizontal"]
+  .tabbrowser-tab:not([selected], [multiselected], :hover)
+  + .tabbrowser-tab:not([selected], [multiselected], :hover)
+  > .tab-stack
+  > .tab-background {
+  box-shadow: inset 1px 0 0 color-mix(in srgb, currentColor 16%, transparent) !important;
+}
+
+/* Pinned / vertical tabs stay square too */
+#tabbrowser-tabs[orient="vertical"] .tab-background {
+  border-radius: var(--omarchy-tab-radius) !important;
+  margin-inline: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"]
+  .tab-background:is([selected], [multiselected]) {
+  box-shadow: inset 2px 0 0 var(--omarchy-tab-accent) !important;
+}
+
+/* New-tab and tab-strip buttons */
+#tabs-newtab-button,
+#vertical-tabs-newtab-button,
+#TabsToolbar #new-tab-button,
+#TabsToolbar #alltabs-button,
+#TabsToolbar toolbarbutton {
+  border-radius: var(--omarchy-tab-radius) !important;
+}
+
+#tabs-newtab-button,
+#vertical-tabs-newtab-button {
+  margin-inline: 0 !important;
+}
+
+#tabbrowser-arrowscrollbox::part(scrollbutton-up),
+#tabbrowser-arrowscrollbox::part(scrollbutton-down) {
+  border-radius: var(--omarchy-tab-radius) !important;
+}
+
+/* Tab group labels follow the same geometry */
+.tab-group-label,
+.tab-group-label-container {
+  border-radius: var(--omarchy-tab-radius) !important;
+}
+
+/* Nav bar / urlbar: same sharp chrome, not round pills next to square tabs */
+#urlbar-background,
+#searchbar {
+  border-radius: var(--omarchy-tab-radius) !important;
+}
+
+#nav-bar .toolbarbutton-1,
+#nav-bar toolbarbutton,
+#PersonalToolbar toolbarbutton {
+  border-radius: var(--omarchy-tab-radius) !important;
+}
+
+#TabsToolbar {
+  padding-inline: 0 !important;
+}
+
+/* Identity / permission bubbles in the urlbar stay usable, just square */
+#urlbar-container .identity-box-button,
+#tracking-protection-icon-container,
+#page-action-buttons > toolbarbutton,
+#urlbar-searchmode-switcher {
+  border-radius: var(--omarchy-tab-radius) !important;
+}
+/* END OMARCHY TABS */

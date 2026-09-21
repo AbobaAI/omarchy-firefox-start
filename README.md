@@ -51,6 +51,17 @@ After install it runs `omafox setup` / `omafox sync` when available, seeds `them
 
 so theme changes refresh the start-page fallback palette.
 
+
+## Rectangular Firefox tabs
+
+`install.sh` also installs sharp / angular tabs (and matching urlbar buttons) via `userChrome.css`:
+
+`firefox/omarchy-tabs.userChrome.css` → each Firefox profile’s `chrome/userChrome.css`
+
+It enables `toolkit.legacyUserProfileCustomizations.stylesheets` in that profile’s `user.js`. Restart Firefox after install.
+
+Skip with `./install.sh --without-tabs`. Uninstall removes only the managed `BEGIN OMARCHY TABS` … `END OMARCHY TABS` block.
+
 ## Customize
 
 | What | Where |
